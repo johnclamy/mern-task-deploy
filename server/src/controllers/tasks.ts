@@ -100,3 +100,25 @@ export const updateTask: RequestHandler<
     next(err);
   }
 };
+
+export const deleteTask: RequestHandler = async (req, res, next) => {
+  const taskId = req.params.taskId;
+
+  try {
+    if (!isValidObjectId(taskId)) {
+      throw createHttpError(400, "Invalid task id");
+    }
+
+    const task = await TaskModel.findById(taskId).exec();
+
+    if (!task) {
+      throw createHttpError(404, "Task not found");
+    }
+
+    await task.remove();
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
