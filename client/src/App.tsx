@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { Task as TaskModel } from "../models/task";
-import Tasks from "../components/tasks/Tasks";
+import { Task as TaskModel } from "./models/task";
+import Tasks from "./components/app/Tasks";
+import Main from "./components/layout/Main";
+import TopBar from "./components/layout/TopBar";
+import Footer from "./components/layout/Footer";
 
 function App() {
   const END_POINT = "/api/tasks";
@@ -21,8 +24,16 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Tasks tasks={tasks} />
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
+      <section>
+        <TopBar />
+        <Main>
+          <Tasks tasks={tasks} />
+        </Main>
+      </section>
+      <Footer />
     </div>
   );
 }
