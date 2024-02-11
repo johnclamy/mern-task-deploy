@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import { Task as TaskModel } from "../../models/task";
+import formatLongDate from "../../utils/format-long-date";
 
 type TaskProps = {
   task: TaskModel;
@@ -8,9 +9,9 @@ type TaskProps = {
 const Task = ({ task }: TaskProps) => {
   const { title, text, createdAt, updatedAt } = task;
   const footNote = createdAt ? (
-    <p className="text-center mb-0">Created at {createdAt}</p>
+    <p className="text-center mb-0">Created at {formatLongDate(createdAt)}</p>
   ) : (
-    <p className="text-center mb-0">Updated on {updatedAt}</p>
+    <p className="text-center mb-0">Updated on {formatLongDate(updatedAt)}</p>
   );
 
   return (
