@@ -1,5 +1,5 @@
 import fetchData from "./fetch-data";
-import { Task } from "../../models/task";
+import { Task } from "../models/task";
 
 const END_POINT = "/api/tasks";
 

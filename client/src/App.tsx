@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Task as TaskModel } from "./models/task";
-import fetchTasksPromise from "./components/api/fetchTasksPromise";
+import fetchTasksPromise from "./api/fetchTasksPromise";
 import Tasks from "./components/app/Tasks";
 import Main from "./components/layout/Main";
 import TopBar from "./components/layout/TopBar";
