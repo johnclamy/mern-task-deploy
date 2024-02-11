@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { Task as TaskModel } from "./models/task";
+import fetchTasksPromise from "./components/api/fetchTasksPromise";
 import Tasks from "./components/app/Tasks";
 import Main from "./components/layout/Main";
 import TopBar from "./components/layout/TopBar";
 import Footer from "./components/layout/Footer";
 
 function App() {
-  const END_POINT = "/api/tasks";
   const [tasks, setTasks] = useState<TaskModel[]>([]);
 
   const fetchTasks = async () => {
     try {
-      const rslt = await fetch(END_POINT, { method: "GET" });
-      const tasks = await rslt.json();
+      const tasks = await fetchTasksPromise();
       setTasks(tasks);
     } catch (err) {
       console.error(err);
