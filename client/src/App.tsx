@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Task as TaskModel } from "./models/task";
 import fetchTasksResponse from "./api/fetchTasksResponse";
 import Tasks from "./components/app/Tasks";
-import CreateTaskModal from "./components/app/CreateTaskModal";
+import CreateTask from "./components/app/CreateTask";
 import Main from "./components/layout/Main";
 import TopBar from "./components/layout/TopBar";
 import Footer from "./components/layout/Footer";
@@ -24,6 +24,10 @@ function App() {
     }
   };
 
+  const handleSaveTask = (task: TaskModel) => {
+    setTasks([...tasks, task]);
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -37,7 +41,11 @@ function App() {
         <Main>
           <div>
             <HeroButton onShow={handleShow}>Add a task</HeroButton>
-            <CreateTaskModal show={showModal} onHide={handleHide} />
+            <CreateTask
+              onSave={handleSaveTask}
+              show={showModal}
+              onHide={handleHide}
+            />
             <Tasks tasks={tasks} />
           </div>
         </Main>
