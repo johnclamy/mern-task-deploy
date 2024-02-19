@@ -1,3 +1,4 @@
+import { UIEvent } from "react";
 import Card from "react-bootstrap/Card";
 import { MdDelete } from "react-icons/md";
 import { Task as TaskModel } from "../../models/task";
@@ -5,15 +6,21 @@ import formatLongDate from "../../utils/format-long-date";
 
 type TaskProps = {
   task: TaskModel;
+  onDeleteTask: (task: TaskModel) => void;
 };
 
-const Task = ({ task }: TaskProps) => {
+const Task = ({ task, onDeleteTask }: TaskProps) => {
   const { title, text, createdAt, updatedAt } = task;
   const footNote = createdAt ? (
     <p className="text-center mb-0">Created at {formatLongDate(createdAt)}</p>
   ) : (
     <p className="text-center mb-0">Updated on {formatLongDate(updatedAt)}</p>
   );
+
+  const handleClick = (e: UIEvent) => {
+    onDeleteTask(task);
+    e.stopPropagation();
+  };
 
   return (
     <Card className="my-1">
@@ -29,6 +36,7 @@ const Task = ({ task }: TaskProps) => {
             marginLeft: "1.2rem",
           }}
           title="Delete task"
+          onClick={handleClick}
         />
       </Card.Header>
       <Card.Body>
