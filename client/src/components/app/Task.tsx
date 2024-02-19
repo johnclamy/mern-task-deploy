@@ -21,7 +21,15 @@ const Task = ({ task }: TaskProps) => {
         <h1 className="text-info mb-0 h6" title="Delete task">
           {title}
         </h1>
-        <MdDelete style={{ color: "red", cursor: "pointer" }} />
+        <MdDelete
+          style={{
+            color: "red",
+            cursor: "pointer",
+            fontSize: "22px",
+            marginLeft: "1.2rem",
+          }}
+          title="Delete task"
+        />
       </Card.Header>
       <Card.Body>
         <Card.Text>{text}</Card.Text>
