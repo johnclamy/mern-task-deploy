@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Task as TaskModel } from "./models/task";
+import deleteTask from "./api/deleteTask";
 import fetchTasksResponse from "./api/fetchTasksResponse";
 import Tasks from "./components/app/Tasks";
 import CreateTask from "./components/app/CreateTask";
@@ -28,6 +29,19 @@ function App() {
     setTasks([...tasks, task]);
   };
 
+  const handleDeleteTask = async (task: TaskModel) => {
+    const taskId = task._id;
+    try {
+      await deleteTask(taskId);
+      const newTasks = tasks.filter(
+        (currentTask) => currentTask._id !== taskId
+      );
+      setTasks(newTasks);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -46,7 +60,7 @@ function App() {
               show={showModal}
               onHide={handleHide}
             />
-            <Tasks tasks={tasks} />
+            <Tasks tasks={tasks} onDeleteTask={handleDeleteTask} />
           </div>
         </Main>
       </section>
