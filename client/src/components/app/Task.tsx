@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import { MdDelete } from "react-icons/md";
 import { Task as TaskModel } from "../../models/task";
 import formatLongDate from "../../utils/format-long-date";
 
@@ -16,8 +17,11 @@ const Task = ({ task }: TaskProps) => {
 
   return (
     <Card className="my-1">
-      <Card.Header as="h5" className="text-info fw-bolder">
-        {title}
+      <Card.Header className="d-flex justify-content-between align-items-center">
+        <h1 className="text-info mb-0 h6" title="Delete task">
+          {title}
+        </h1>
+        <MdDelete style={{ color: "red", cursor: "pointer" }} />
       </Card.Header>
       <Card.Body>
         <Card.Text>{text}</Card.Text>
