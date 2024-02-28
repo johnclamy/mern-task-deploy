@@ -1,6 +1,6 @@
 import { MdAdd } from "react-icons/md";
 
-const HeroButtonAddIcon = () => (
+const AddIcon = () => (
   <MdAdd
     style={{
       marginRight: "0.2rem",
@@ -10,4 +10,4 @@ const HeroButtonAddIcon = () => (
   />
 );
 
-export default HeroButtonAddIcon;
+export default AddIcon;
