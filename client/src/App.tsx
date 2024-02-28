@@ -8,7 +8,7 @@ import Main from "./components/layout/Main";
 import TopBar from "./components/layout/TopBar";
 import Footer from "./components/layout/Footer";
 import HeroButton from "./components/widgets/HeroButton";
-import HeroButtonAddIcon from "./components/widgets/HeroButtonAddIcon";
+import AddIcon from "./components/widgets/AddIcon";
 
 function App() {
   const [tasks, setTasks] = useState<TaskModel[]>([]);
@@ -57,7 +57,7 @@ function App() {
           <div>
             <HeroButton onShow={handleShow}>
               <span className="d-flex align-items-center justify-content-center">
-                <HeroButtonAddIcon />
+                <AddIcon />
                 <i>Add a task</i>
               </span>
             </HeroButton>
