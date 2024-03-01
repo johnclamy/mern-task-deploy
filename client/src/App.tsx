@@ -30,6 +30,8 @@ function App() {
     setTasks([...tasks, task]);
   };
 
+  const handleUpdateTask = () => {};
+
   const handleDeleteTask = async (task: TaskModel) => {
     const taskId = task._id;
     try {
@@ -66,7 +68,11 @@ function App() {
               show={showModal}
               onHide={handleHide}
             />
-            <Tasks tasks={tasks} onDeleteTask={handleDeleteTask} />
+            <Tasks
+              tasks={tasks}
+              onDeleteTask={handleDeleteTask}
+              onUpdateTask={handleUpdateTask}
+            />
           </div>
         </Main>
       </section>
